@@ -9,11 +9,17 @@
     <title>STAR WARS WIKI</title>
 </head>
 
-<body>
+<body onmouseover="playThemeSong()">
+    <audio class="theme-song" src="./8d82b5_Star_Wars_Main_Theme_Song.mp3"></audio>
+    <audio class="lightsaber" id="saber" src="./Clash clash.mp3" preload="auto"></audio>
+    <div class="starwars-demo">
+        <img src="//cssanimation.rocks/demo/starwars/images/star.svg" alt="Star" class="star">
+        <img src="//cssanimation.rocks/demo/starwars/images/wars.svg" alt="Wars" class="wars">
+        <h2 class="byline" id="byline">The Force Awakens</h2>
+    </div>
     <div class="container">
-        <h1> STAR WARS CHARACTER </h1>
         <div id="searchWrapper">
-            <input type="text" name="searchBar" id="searchBar" placeholder="don't try to search for a character, it does not work!!" />
+            <input type="text" name="searchBar" id="searchBar" placeholder="search for a character" />
         </div>
         <ul id="charactersList"></ul>
     </div>

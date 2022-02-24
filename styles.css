@@ -1,18 +1,12 @@
 body {
     font-family: sans-serif;
-    background-color: #c0b2a1e3;
+    background-image: url(./images/Z7D2q6.jpg);
 }
 
 * {
     box-sizing: border-box;
 }
 
-h1 {
-    color: rgb(99, 60, 35);
-    margin-bottom: 30px;
-    text-align: center;
-    margin-top: 8%;
-}
 
 .container {
     padding: 40px;
@@ -28,9 +22,14 @@ h1 {
     grid-gap: 20px;
 }
 
+li:hover {
+    background-color: rgb(180, 0, 0);
+    cursor: pointer;
+}
+
 .character {
     list-style-type: none;
-    background-color: #bb26215b;
+    background-color: #fada4d;
     border-radius: 3px;
     padding: 10px 20px;
     display: grid;
@@ -68,3 +67,129 @@ h1 {
     top: 7px;
     right: 15px;
 }
+
+/* Animation properties */
+.star {
+    animation: star 10s ease-out infinite;
+  }
+  .wars {
+    animation: wars 10s ease-out infinite;
+  }
+  .byline span {
+    animation: spin-letters 10s linear infinite;
+  }
+  .byline {
+    animation: move-byline 10s linear infinite;
+  }
+  
+  /* Keyframes */
+  @keyframes star {
+    0% {
+      opacity: 0;
+      transform: scale(1.5) translateY(-0.75em);
+    }
+    20% {
+      opacity: 1;
+    }
+    89% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateZ(-1000em);
+    }
+  }
+  
+  @keyframes wars {
+    0% {
+      opacity: 0;
+      transform: scale(1.5) translateY(0.5em);
+    }
+    20% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateZ(-1000em);
+    }
+  }
+  
+  @keyframes spin-letters {
+    0%, 10% {
+      opacity: 0;
+      transform: rotateY(90deg);
+    }
+    30% {
+      opacity: 1;
+    }
+    70%, 86% {
+      transform: rotateY(0);
+      opacity: 1;
+    }
+    95%, 100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes move-byline {
+    0% {
+      transform: translateZ(5em);
+    }
+    100% {
+      transform: translateZ(0);
+    }
+  }
+  
+  /* Make the 3D work on the container */
+  .starwars-demo {
+    perspective: 800px;
+    transform-style: preserve3d;
+  }
+  
+  /* General styles and layout */
+  .starwars-demo {
+    background: #000 url(//cssanimation.rocks/demo/starwars/images/bg.jpg);
+  }
+  
+  .starwars-demo {
+    height: 17em;
+    margin: 10% 35% 5% 35%;
+    width: 34em;
+  }
+  
+  .byline span {
+    display: inline-block;
+  }
+  
+  img {
+    width: 100%;
+  }
+  
+  .star, .wars, .byline {
+    position: absolute;
+  }
+  
+  .star {
+    top: -0.75em;
+  }
+  
+  .wars {
+    bottom: -0.5em;
+  }
+  
+  .byline {
+    color: #fff;
+    font-family: "ITC Serif Gothic", Lato;
+    font-size: 2.25em;
+    left: -2em;
+    letter-spacing: 0.4em;
+    right: -2em;
+    text-align: center;
+    text-transform: uppercase;
+    top: 29%;
+  }

@@ -32,7 +32,7 @@ searchBar.addEventListener('keyup', (event) => {
 const displayCharacters = (characters) => {
     const htmlString = characters.map((character) => {
         return `
-                <li class="character">
+                <li id="play" onmouseover="playSound()" onmouseleave="pauseSound()" class="character">
                     <h2>${character.name}</h2>
                     <p>Date of birth: ${character.birth_year}</p>
                 </li>
@@ -41,4 +41,48 @@ const displayCharacters = (characters) => {
     charactersList.innerHTML = htmlString;
 };
 
+var byline = document.getElementById('byline');   
+bylineText = byline.innerHTML;                    
+bylineArr = bylineText.split('');                
+byline.innerHTML = '';                            
+
+var span;         
+var letter;
+
+for(i=0;i<bylineArr.length;i++){                 
+  span = document.createElement("span");          
+  letter = document.createTextNode(bylineArr[i]); 
+  if(bylineArr[i] == ' ') {                       
+    byline.appendChild(letter);         
+  } else {
+    span.appendChild(letter);           
+    byline.appendChild(span);           
+  }
+}
+
 loadCharacters();
+
+
+
+const playHover = document.getElementById('play'),
+  saber = document.getElementById('saber')
+	audios = document.querySelectorAll('audio');
+    themeSong = document.querySelector(".theme-song")
+
+
+function playSound() {
+    saber.play();
+}
+
+function playThemeSong() {
+    themeSong.play()
+}
+
+function pauseSound() {
+    saber.pause()
+    saber.currentTime = 0;
+}
+// playHover.addEventListener('mouseleave', function() {
+//   audio.pause();
+//   audio.currentTime = 0;
+// }, false);
