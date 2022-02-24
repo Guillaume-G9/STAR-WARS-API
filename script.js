@@ -3,31 +3,34 @@ const searchBar = document.getElementById('searchBar');
 let starWarsChar = [];
 
 
-searchBar.addEventListener('keyup', (e) => {
-    const searchString = e.target.value.toLowerCase();
-
-    const filteredCharacters = starWarsChar.results.filter((character) => {
-        return (
-            character.name.toLowerCase().includes(searchString) ||
-            character.birth_year.toLowerCase().includes(searchString)
-        );
-    });
-    displayCharacters(filteredCharacters);
-});
 
 const loadCharacters = async() => {
     try {
         const res = await fetch('https://swapi.dev/api/people/');
         starWarsChar = await res.json();
-        console.log(starWarsChar);
+        starWarsChar = starWarsChar.results
         displayCharacters(starWarsChar);
     } catch (err) {
         console.error(err);
     }
 };
 
+
+searchBar.addEventListener('keyup', (event) => {
+    let input = event.target.value.toLowerCase();
+    console.log(starWarsChar)
+    const filter = starWarsChar.filter(character => {
+        return (
+            character.name.toLowerCase().includes(input) ||
+            character.birth_year.toLowerCase().includes(input)
+        )
+    })
+    displayCharacters(filter)
+})
+
+
 const displayCharacters = (characters) => {
-    const htmlString = characters.results.map((character) => {
+    const htmlString = characters.map((character) => {
         return `
                 <li class="character">
                     <h2>${character.name}</h2>
